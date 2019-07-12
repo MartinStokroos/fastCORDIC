@@ -1,5 +1,5 @@
 /*
- * File: test_Cordic.ino
+ * File: CORDIC-test.ino
  * Purpose: Test program for evaluating the CORDIC atan2sqrt function
  * Version: 1.0.0
  * Date: 12-07-2019
@@ -17,8 +17,8 @@ long x, y;
 double angle;
 int k;
 
-cordic8 cordic;    //test cordic8 - 8-bit implementation
-//cordic10 cordic;  //test cordic10 - 10-bit implementation (but slower...)
+cordic8 cordic;    //test cordic8, the 8-bit implementation
+//cordic10 cordic;  //test cordic10, the 10-bit implementation (but slower...)
 
 
 void setup()
