@@ -8,6 +8,7 @@
 
 cordic8			KEYWORD1
 cordic10		KEYWORD1
+cordic16		KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)

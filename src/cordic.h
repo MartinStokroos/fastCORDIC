@@ -94,17 +94,23 @@
  * 32768*tan((2/1024)*360) = 402
  * 32768*tan((1/1024)*360) = 201
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-
-/*
-* Creating look-up tables. There is overlap between 8-bit and 10-bit tables.
-* 8-bit: phi={64,32,16,8,4,2,1}, address with index range 0-4
-* 10-bit: phi={64,32,16,8,4,2,1}, address with index range 0-6 (0-5 for tan_lut)
-*/ 
+ *
+ * Creating look-up tables. There is overlap between 8-bit and 10-bit tables.
+ * 8-bit: phi={64,32,16,8,4,2,1}, address with index range 0-4
+ * 10-bit: phi={64,32,16,8,4,2,1}, address with index range 0-6 (0-5 for tan_lut)
+ */ 
 const unsigned int sin_lut[7] = {12540, 6393, 3212, 1608, 804, 402, 201};
 const unsigned int cos_lut[7] = {30274, 32138, 32610, 32729, 32758, 32766, 32767};
 const unsigned int tan_lut[6] = {32768, 13573, 6518, 3227, 1610, 804};
+
+
+//Used for sincos
+#define CORDIC_1K 0x000026DD
+#define MUL 16384.0
+#define CORDIC_NTAB 16
+
+const int cordic_ctab [CORDIC_NTAB] = {0x00003243, 0x00001DAC, 0x00000FAD, 0x000007F5, 0x000003FE, 0x000001FF, 0x000000FF, 0x0000007F, 0x0000003F, 0x0000001F, 0x0000000F, 0x00000007, 0x00000003, 0x00000001, 0x00000000, 0x00000000};
+
 
 
 class cordic8
@@ -136,6 +142,19 @@ private:
 	unsigned char k;
 	unsigned int phi, currentAngle;
 	bool sign;
+};
+
+
+
+class cordic16
+{
+public:
+	void sincos(int _theta, int _n);
+	int sin, cos;
+
+private:
+	int n, k, d, tx, ty, tz;
+  	int x, y, z;
 };
 
 #endif /* cordic_H_ */
