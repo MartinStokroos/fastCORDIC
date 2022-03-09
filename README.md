@@ -7,11 +7,10 @@ The function implemented here is the *atan2sqrt* function, which calculates the 
 radius (length) of the vector that points to (x,y). This function is very useful in DSP
 applications such as digital down conversion.
 
-The CORDIC implementation of ATAN2 is up to twice as fast as the ATAN2 from the standard 
-Arduino library. The CORDIC algorithm rotates a vector until it is aligned with the positive
+The CORDIC implementation of ATAN2 is up to twice as fast as the *atan2* from the standard 
+Arduino library. The CORDIC algorithm rotates a vector clockwise until it is aligned with the positive
 x-axis. In this implementation the length of the vector is retained and thus, the square-root
-of x^2+y^2 is known and equals the value of x after rotation.
+of x^2^ + y^2^ is known and equals to the value of x after rotation.
 
 An example sketch is provided for benchmarking the CORDIC routine(s).
 
-Maybe someone could help optimizing this code for ultimately the fastest solution possible on the Arduino.... 
